@@ -5,10 +5,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --base-href https://myushchenko.github.io/angular4-app/",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "angular-cli-ghpages"
   },
   "private": true,
   "dependencies": {
@@ -36,6 +37,7 @@
     "@types/jasmine": "^2.6.0",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
+    "angular-cli-github-pages": "^0.2.0",
     "codelyzer": "~3.2.0",
     "jasmine-core": "^2.8.0",
     "jasmine-spec-reporter": "^4.2.1",
