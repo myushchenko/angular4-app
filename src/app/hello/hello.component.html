@@ -1,0 +1,11 @@
+<mat-card>
+    <mat-card-content>  
+        <p>
+            Hi my name is <b class="name">{{user.name}}</b>. I was born on {{user.dateOfBirth|date}}. 
+            I'm from <b *ngIf="user.city">{{user.city}}</b><span *ngIf="user.city">,</span> 
+            <b *ngIf="user.state">{{user.state}}</b><span *ngIf="user.state">,</span> <b>{{user.country}}</b>. 
+          </p>
+          <p>You can contact me at <b><a href="mailto:{{user.email}}">{{user.email}}</a></b> or <b>{{user.fullPhone}}</b>.</p>
+          <button (click)="back()" color="primary" mat-raised-button>Back</button>
+    </mat-card-content>
+</mat-card>

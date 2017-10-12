@@ -1,0 +1,90 @@
+<form class="personal-form" [formGroup]="userForm" (ngSubmit)="submit(userForm.value)">
+    <mat-tab-group>
+        <mat-tab label="Personal">
+            <mat-card>
+                
+                <mat-card-header>
+                    <mat-card-title>User Info</mat-card-title>
+                </mat-card-header>
+            
+                <mat-card-content>
+                    <mat-form-field>
+                        <input matInput placeholder="Name" formControlName="name">
+                        <mat-icon matSuffix>mode_edit</mat-icon>
+                    </mat-form-field>
+                    <mat-error *ngIf="!userForm.controls['name'].valid && userForm.controls['name'].touched">
+                        Name is <strong>required</strong>
+                    </mat-error>
+                    
+                    <mat-form-field>
+                        <input matInput placeholder="Email" formControlName="email">
+                        <mat-icon matSuffix>mode_edit</mat-icon>
+                        <mat-error *ngIf="userForm.controls['email'].hasError('pattern')">
+                            Please enter a valid email address
+                        </mat-error>
+                        <mat-error *ngIf="userForm.controls['email'].hasError('required')">
+                            Email is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+        
+                    <mat-form-field>
+                        <span matPrefix>+{{phoneCode}} &nbsp;</span>
+                        <input type="tel" #phone matInput maxlength="9" placeholder="Phone" formControlName="phone">
+                        <mat-icon matSuffix>mode_edit</mat-icon>
+                        <mat-hint align="end">{{phone.value.length}} / 9</mat-hint>
+                        <mat-error *ngIf="userForm.controls['phone'].hasError('pattern')">
+                            Please enter a valid phone number
+                        </mat-error>
+                        <mat-error *ngIf="userForm.controls['phone'].hasError('required') && userForm.controls['name'].touched">
+                            Phone is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+        
+                    <mat-form-field>
+                        <input matInput 
+                            [min]="minDate" 
+                            [max]="maxDate" 
+                            [matDatepicker]="picker" 
+                            placeholder="Date of birth" 
+                            formControlName="dateOfBirth">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker touchUi="enableTouchUi" [startAt]="startDate"></mat-datepicker>
+                        <mat-error *ngIf="userForm.controls['dateOfBirth'].hasError('required') && userForm.controls['name'].touched">
+                            Date of birth is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+
+                </mat-card-content>
+            </mat-card>
+        </mat-tab>
+        <mat-tab label="Location">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Location Info</mat-card-title>
+                </mat-card-header>
+            
+                <mat-card-content>
+                    <mat-form-field>
+                        <input matInput placeholder="Country" formControlName="country">
+                        <mat-icon matSuffix>mode_edit</mat-icon>
+                        <mat-error *ngIf="userForm.controls['country'].hasError('required') && userForm.controls['name'].touched">
+                            Country is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input matInput placeholder="City" formControlName="city">
+                        <mat-icon matSuffix>mode_edit</mat-icon>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input matInput placeholder="State" formControlName="state">
+                        <mat-icon matSuffix>mode_edit</mat-icon>
+                    </mat-form-field>
+                </mat-card-content>
+            </mat-card>
+        </mat-tab>
+    </mat-tab-group>
+
+    <button type="submit" color="primary" mat-raised-button [disabled]="!userForm.valid">Submit</button>
+</form>
