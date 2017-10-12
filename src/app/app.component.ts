@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { LayoutService } from './core/layout.service';
 
 @Component({
@@ -9,11 +11,15 @@ import { LayoutService } from './core/layout.service';
 export class AppComponent implements OnInit {
   appTitle = 'Angular4 App';
 
-  constructor(private layoutService: LayoutService) { }
+  constructor(private router: Router, private layoutService: LayoutService) { }
 
   ngOnInit() {
     this.layoutService.changeTitle$.subscribe(text => {
       this.appTitle = text;
     });
+  }
+
+  about() {
+    this.router.navigate(['/about']);
   }
 }

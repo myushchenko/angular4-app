@@ -23,8 +23,8 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Deploy to server(github-pages) 
 
-<code>npm run build</code>
-<code>npm run deploy<code>
+`npm run build`
+`npm run deploy`
 
 URL: https://myushchenko.github.io/angular4-app
 

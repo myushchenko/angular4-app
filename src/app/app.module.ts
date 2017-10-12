@@ -24,12 +24,14 @@ import { PersonalDetailComponent } from './personal-detail/personal-detail.compo
 import { AppRoutingModule } from './app-routing.module';
 import { HelloComponent } from './hello/hello.component';
 import { APP_CONFIG, AppConfig } from './shared/app.config.constants';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonalDetailComponent,
-    HelloComponent
+    HelloComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
